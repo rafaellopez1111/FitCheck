@@ -1,5 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STORAGE_KEYS, ID_PREFIXES, RESPONSE_CODES, FIELDS } from '../config/config';
+import { ID_PREFIXES, RESPONSE_CODES, FIELDS } from '../config/config';
 
 export function buildResponse(code, message, data = null) {
   const success = code === RESPONSE_CODES.OK;
@@ -29,24 +28,6 @@ export function pickAllowedFields(entity, input){
     }
     return filteredInput;
 }
-
-export function readCollection(entity){
-    const key = STORAGE_KEYS[entity];
-    return AsyncStorage.getItem(key)
-        .then((data) => {
-            if (data) {
-                return JSON.parse(data);
-            } else {
-                return [];
-            }
-        })
-}
-
-export function writeCollection(entity, list){
-    const key = STORAGE_KEYS[entity];
-    return AsyncStorage.setItem(key, JSON.stringify(list))
-}
-
 
 export function now() {
   return new Date().toISOString();

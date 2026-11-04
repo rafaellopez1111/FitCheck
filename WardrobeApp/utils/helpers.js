@@ -1,7 +1,7 @@
 import { ID_PREFIXES, RESPONSE_CODES, FIELDS } from '../config/config';
 
 export function buildResponse(code, message, data = null) {
-  const success = code === RESPONSE_CODES.OK;
+  const success = code === RESPONSE_CODES.ok;
   return {
     'code': code,
     'success': success,

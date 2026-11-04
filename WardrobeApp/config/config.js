@@ -1,19 +1,17 @@
-// config/config.js
-
 export const ENTITIES = {
-  CLOTHING: 'clothing',
-  WISHLIST: 'wishlist',
-  OUTFIT: 'outfit',
-  PROFILE: 'profile',
+  clothing: 'clothing',
+  wishlist: 'wishlist',
+  outfit: 'outfit',
+  profile: 'profile',
 };
 
 export const ACTIONS = {
-  CREATE: 'create',
-  GET_ONE: 'get_one',
-  GET_ALL: 'get_all',
-  UPDATE: 'update',
-  DELETE: 'delete',
-  MARK_AS_BOUGHT: 'mark_as_bought',
+  create: 'create',
+  get_one: 'get_one',
+  get_all: 'get_all',
+  update: 'update',
+  delete: 'delete',
+  mark_as_bought: 'mark_as_bought',
 };
 
 export const ALLOWED_ACTIONS = {
@@ -25,6 +23,13 @@ export const ALLOWED_ACTIONS = {
 
 export const ACTIONS_REQUIRING_DATA = [
   'create',
+  'get_one',
+  'update',
+  'delete',
+  'mark_as_bought',
+];
+
+export const ACTIONS_REQUIRING_ID = [
   'get_one',
   'update',
   'delete',
@@ -94,7 +99,7 @@ export const STYLES = [
   'Vintage',
   'Boho',
   'Skinny',
-  'Baggy'
+  'Baggy',
 ];
 
 export const PRIORITIES = ['low', 'medium', 'high'];
@@ -114,11 +119,11 @@ export const STORAGE_KEYS = {
 };
 
 export const RESPONSE_CODES = {
-  OK: 200,
-  BAD_REQUEST: 400,
-  NOT_FOUND: 404,
-  METHOD_NOT_ALLOWED: 405,
-  SERVER_ERROR: 500,
+  ok: 200,
+  bad_request: 400,
+  not_found: 404,
+  method_not_allowed: 405,
+  server_error: 500,
 };
 
 export const RESPONSE_FIELDS = ['code', 'success', 'message', 'data'];

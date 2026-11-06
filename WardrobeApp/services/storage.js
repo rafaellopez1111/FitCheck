@@ -1,19 +1,18 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STORAGE_KEYS } from '../config/config';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
 
-export function readCollection(entity){
-    const key = STORAGE_KEYS[entity];
-    return AsyncStorage.getItem(key)
-        .then((data) => {
-            if (data) {
-                return JSON.parse(data);
-            } else {
-                return [];
-            }
-        })
-}
+const firebaseConfig = {
+  apiKey: "AIzaSyCJgRxDwTNGVPF11obLs6duJOBY7sNq8uI",
+  authDomain: "projeto-1-54f65.firebaseapp.com",
+  databaseURL: "https://projeto-1-54f65-default-rtdb.firebaseio.com",
+  projectId: "projeto-1-54f65",
+  storageBucket: "projeto-1-54f65.firebasestorage.app",
+  messagingSenderId: "598600841738",
+  appId: "1:598600841738:web:0a7e4b26f4fa649ce33df3",
+  measurementId: "G-WVWRYZKZYY"
+};
 
-export function writeCollection(entity, list){
-    const key = STORAGE_KEYS[entity];
-    return AsyncStorage.setItem(key, JSON.stringify(list))
-}
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+

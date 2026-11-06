@@ -66,6 +66,7 @@ export const PROTECTED_FIELDS = [
   'created_by',
   'updated_on',
   'updated_by',
+  'version'
 ];
 
 export const CATEGORIES = [

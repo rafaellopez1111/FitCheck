@@ -1,18 +1,50 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase } from 'firebase/database';
+import { ref, set, get, query, orderByKey, limitToLast } from 'firebase/database';
+import { db } from '../config/firebase';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCJgRxDwTNGVPF11obLs6duJOBY7sNq8uI",
-  authDomain: "projeto-1-54f65.firebaseapp.com",
-  databaseURL: "https://projeto-1-54f65-default-rtdb.firebaseio.com",
-  projectId: "projeto-1-54f65",
-  storageBucket: "projeto-1-54f65.firebasestorage.app",
-  messagingSenderId: "598600841738",
-  appId: "1:598600841738:web:0a7e4b26f4fa649ce33df3",
-  measurementId: "G-WVWRYZKZYY"
-};
+export async function insertOne(userId, entity, id, data) {
+  const version = String(data.version).padStart(6, '0');
+  const path = `users/${userId}/${entity}/${id}/${version}`;
+  await set(ref(db, path), data);
+}
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export async function getOneInfo(userId, entity, id) {
+  const path = `users/${userId}/${entity}/${id}/${String(await getHighestVersion(userId, entity, id)).padStart(6, '0')}`;
+  const snapshot = await get(ref(db, path));
+  return snapshot.val();
+}
 
+export async function getHighestVersion(userId, entity, id) {
+    const path = `users/${userId}/${entity}/${id}`;
+    const snapshot = await get(query(ref(db, path), orderByKey(), limitToLast(1)));
+    
+    if (snapshot.exists()) {
+        const highestVersionKey = Object.keys(snapshot.val())[0];
+
+        return parseInt(highestVersionKey, 10);
+    }
+    return 0;
+}
+
+export async function getAllInfo(userId, entity) {
+    const path = `users/${userId}/${entity}`;
+    const snapshot = await get(ref(db, path));
+
+    if (!snapshot.exists()) {
+        return [];
+    }
+
+    const items = snapshot.val();
+
+    const result = Object.values(items).map((versions) => {
+        const highestVersionKey = Object.keys(versions).sort();
+        const highestVersion = versions[highestVersionKey[highestVersionKey.length - 1]];
+        return highestVersion;
+    });
+
+    return result;
+}
+
+export async function deleteOne(userId, entity, id) {
+  const path = `users/${userId}/${entity}/${id}`;
+  await set(ref(db, path), null);
+}

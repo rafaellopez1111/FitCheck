@@ -3,13 +3,15 @@ import ClothesScreen from '../screens/clothes_screen';
 import OutfitsScreen from '../screens/outfits_screen';
 import WishlistScreen from '../screens/wishlist_screen';
 import ProfileScreen from '../screens/profile_screen';
+import HomeScreen from '../screens/home_screen';
 
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
 
     return (
-    <Tab.Navigator initialRouteName={"Clothes"}>
+    <Tab.Navigator initialRouteName={"Home"}>
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Clothes" component={ClothesScreen} />
       <Tab.Screen name="Outfits" component={OutfitsScreen} />
       <Tab.Screen name="Wishlist" component={WishlistScreen} />

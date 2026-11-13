@@ -40,7 +40,7 @@ export const FIELDS = {
   clothing: {
     required: ['name', 'category'],
     optional: ['photo', 'brand', 'size', 'style', 'notes'],
-    summary: ['id', 'name', 'category', 'photo', 'brand'],
+    summary: ['id', 'name', 'category', 'photo', 'brand', 'style'],
   },
   wishlist: {
     required: ['name', 'category'],

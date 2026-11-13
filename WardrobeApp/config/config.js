@@ -40,12 +40,12 @@ export const FIELDS = {
   clothing: {
     required: ['name', 'category'],
     optional: ['photo', 'brand', 'size', 'style', 'notes'],
-    summary: ['id', 'name', 'category', 'photo', 'brand', 'style'],
+    summary: ['id', 'name', 'category', 'photo', 'brand', 'style', 'size'],
   },
   wishlist: {
     required: ['name', 'category'],
     optional: ['photo', 'brand', 'size', 'style', 'notes', 'price', 'store_link', 'priority'],
-    summary: ['id', 'name', 'category', 'photo', 'brand', 'style', 'price', 'priority'],
+    summary: ['id', 'name', 'category', 'photo', 'brand', 'style', 'price', 'priority', 'size'],
   },
   outfit: {
     required: ['name', 'item_ids'],
@@ -105,18 +105,13 @@ export const STYLES = [
 
 export const PRIORITIES = ['low', 'medium', 'high'];
 
+export const PRIORITY_LABELS = { low: 'Baixa', medium: 'Média', high: 'Alta' };
+
 export const ID_PREFIXES = {
   clothing: 'c_',
   wishlist: 'w_',
   outfit: 'o_',
   profile: 'u_',
-};
-
-export const STORAGE_KEYS = {
-  clothing: 'wardrobe:clothing',
-  wishlist: 'wardrobe:wishlist',
-  outfit: 'wardrobe:outfit',
-  profile: 'wardrobe:profile',
 };
 
 export const RESPONSE_CODES = {
@@ -129,5 +124,22 @@ export const RESPONSE_CODES = {
 
 export const RESPONSE_FIELDS = ['code', 'success', 'message', 'data'];
 
+export const CATEGORY_GROUPS = {
+  tops: ['Camisa', 'Camiseta', 'Blusa', 'Casaco', 'Vestido'],
+  bottoms: ['Calça', 'Shorts', 'Bermuda', 'Jorts', 'Saia'],
+  shoes: ['Sapato', 'Tênis', 'Chinelo', 'Bota', 'Sandália']
+};
+
 export const COLORS = {
+  background: '#FAF7FB',
+  card: '#FFFFFF',
+  border: '#E8E0EE',
+  text: '#241B2F',
+  mutedText: '#7C7288',
+  primary: '#5B2A86',
+  primarySoft: '#EFE8F5',
+  accent: '#FF7A59',
+  danger: '#D64545',
+  dangerSoft: '#FDECEC',
+  white: '#FFFFFF',
 };

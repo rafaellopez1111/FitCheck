@@ -1,10 +1,13 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import AppButton from './app_button';
+import { COLORS } from '../config/config';
 
 export default function EmptyState({ message, actionLabel, onAction }) {
   return (
     <View style={styles.container}>
+      <Text style={styles.icon}>🧺</Text>
       <Text style={styles.message}>{message}</Text>
-      {actionLabel ? <Button title={actionLabel} onPress={onAction} /> : null}
+      {actionLabel ? <AppButton title={actionLabel} onPress={onAction} variant="secondary" /> : null}
     </View>
   );
 }
@@ -14,10 +17,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 24,
+    padding: 32,
+  },
+  icon: {
+    fontSize: 48,
+    marginBottom: 12,
   },
   message: {
     textAlign: 'center',
-    marginBottom: 12,
+    fontSize: 16,
+    color: COLORS.mutedText,
+    marginBottom: 16,
   },
 });

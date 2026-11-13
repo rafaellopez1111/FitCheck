@@ -2,8 +2,6 @@
 
 Aplicativo mobile para cadastrar as roupas que você tem, guardar uma lista das roupas que quer comprar (wishlist), montar outfits e receber sugestões de outfit ao chacoalhar o celular.
 
-Projeto da disciplina CCP150 Desenvolvimento de Aplicativos Móveis (FEI). Projeto individual com tema livre.
-
 ## Visão Geral e Requisitos
 
 **Tema.** Organizar o guarda-roupa: saber o que se tem, o que falta comprar e como combinar as peças.

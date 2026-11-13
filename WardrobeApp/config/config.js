@@ -45,7 +45,7 @@ export const FIELDS = {
   wishlist: {
     required: ['name', 'category'],
     optional: ['photo', 'brand', 'size', 'style', 'notes', 'price', 'store_link', 'priority'],
-    summary: ['id', 'name', 'category', 'photo', 'price', 'priority'],
+    summary: ['id', 'name', 'category', 'photo', 'brand', 'style', 'price', 'priority'],
   },
   outfit: {
     required: ['name', 'item_ids'],
